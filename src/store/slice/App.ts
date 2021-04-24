@@ -1,14 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type App = {};
+export type AppState = {
+  hoge: string;
+};
 
-const initialState: App = {};
+const initialState: AppState = {
+  hoge: "",
+};
 
 export const appSlice = createSlice({
   name: "App",
   initialState,
-  reducers: {},
+  reducers: {
+    setHoge: (state, action: PayloadAction<{ hoge: string }>) => {
+      state.hoge = action.payload.hoge;
+    },
+  },
 });
 
-export const {} = appSlice.actions;
+export const { setHoge } = appSlice.actions;
 export default appSlice.reducer;

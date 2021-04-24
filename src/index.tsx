@@ -1,17 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-// import { Provider } from "react-redux";
+import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
+import { store } from "./store/Store";
 
 const isDebug = process.env.REACT_APP_DEBUG;
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
-    <App />
-    {isDebug && <p>isDebug</p>}
-    {/* </Provider> */}
+    <Provider store={store}>
+      <App />
+      {isDebug && <p>isDebug</p>}
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

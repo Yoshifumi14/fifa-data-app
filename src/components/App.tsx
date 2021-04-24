@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import { appHogeSelector } from "../store/slice/App/AppSelector";
-import { deleteNationalPlayerData, getPlayerData } from "../store/slice/Data/PlayerData/PlayerData";
-import { playerDataListSelector } from "../store/slice/Data/PlayerData/PlayerDataSelector";
+import { appHogeSelector } from "../store/slice/app/AppSelector";
+import { deleteNationalPlayerData, getPlayerData } from "../store/slice/data/player/PlayerData";
+import { playerDataListSelector } from "../store/slice/data/player/PlayerDataSelector";
 
 export function App() {
   const hoge = useSelector(appHogeSelector);

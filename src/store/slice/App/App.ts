@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type AppState = {
-  hoge: string;
+  queryConditonIdList: string[];
 };
 
 const initialState: AppState = {
-  hoge: "",
+  queryConditonIdList: [],
 };
 
 export const appSlice = createSlice({
   name: "App",
   initialState,
   reducers: {
-    setHoge: (state, action: PayloadAction<{ hoge: string }>) => {
-      state.hoge = action.payload.hoge;
+    addQueryConditonId: (state, action: PayloadAction<{ queryConditonId: string }>) => {
+      state.queryConditonIdList.push(action.payload.queryConditonId);
     },
   },
 });
 
-export const { setHoge } = appSlice.actions;
+export const { addQueryConditonId } = appSlice.actions;
 export default appSlice.reducer;

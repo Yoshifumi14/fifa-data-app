@@ -8,15 +8,12 @@ import * as serviceWorker from "./serviceWorker";
 import { store } from "./store/Store";
 import { muiTheme } from "./MuiTheme";
 
-const isDebug = process.env.REACT_APP_DEBUG;
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={muiTheme}>
         <CssBaseline />
         <App />
-        {isDebug && <p>isDebug</p>}
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,

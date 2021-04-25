@@ -27,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,6 +46,14 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^6.2.9",
     "@types/plotly.js": "^1.54.10"
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0"
   }
 }

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
-
+import Container from "@material-ui/core/Container";
 import { deleteNationalPlayerData, getPlayerData } from "../store/slice/data/player/PlayerData";
 import { playerDataListSelector } from "../store/slice/data/player/PlayerDataSelector";
 
@@ -9,16 +9,16 @@ export function App() {
   const playerDataListJapan = useSelector(playerDataListSelector("Japan"));
   const playerDataListEngland = useSelector(playerDataListSelector("England"));
   return (
-    <div>
+    <Container>
       <h3>app</h3>
       <div>
-        <Button variant="contained" onClick={() => dispatch(getPlayerData({ nationality: "Japan" }))}>
+        <Button variant="contained" color="primary" onClick={() => dispatch(getPlayerData({ nationality: "Japan" }))}>
           Japan
         </Button>
-        <Button variant="contained" onClick={() => dispatch(getPlayerData({ nationality: "England" }))}>
+        <Button variant="contained" color="primary" onClick={() => dispatch(getPlayerData({ nationality: "England" }))}>
           England
         </Button>
-        <Button variant="outlined" onClick={() => dispatch(deleteNationalPlayerData())}>
+        <Button variant="outlined" color="secondary" onClick={() => dispatch(deleteNationalPlayerData())}>
           Clear
         </Button>
         {playerDataListJapan?.map((player) => (
@@ -32,7 +32,7 @@ export function App() {
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 

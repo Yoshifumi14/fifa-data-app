@@ -1,17 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { CssBaseline, ThemeProvider } from "@material-ui/core";
+
 import App from "./components/App";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { store } from "./store/Store";
+import { muiTheme } from "./MuiTheme";
 
 const isDebug = process.env.REACT_APP_DEBUG;
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
-      {isDebug && <p>isDebug</p>}
+      <ThemeProvider theme={muiTheme}>
+        <CssBaseline />
+        <App />
+        {isDebug && <p>isDebug</p>}
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

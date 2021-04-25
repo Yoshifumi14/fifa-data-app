@@ -12,7 +12,7 @@ csvファイルををpandasで読み込んでクエリ結果を返す。
 
 ### 実行
 ```sh
-$ python flask/app.py
+$ python flask/debug.py
 ```
 
 ### その他

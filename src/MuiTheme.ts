@@ -12,7 +12,7 @@ export const muiTheme = createMuiTheme({
       main: cyan[800],
     },
     secondary: {
-      main: cyan[500],
+      main: cyan[600],
     },
     text: {
       primary: blueGrey[800],

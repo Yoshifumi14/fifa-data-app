@@ -20,6 +20,7 @@ const Template = (args: PaperContainerProps) => {
 
 export const Default = Template.bind({});
 
+// @ts-ignore: https://github.com/storybookjs/storybook/issues/11916
 Default.args = {
   renderContents: (
     <div>

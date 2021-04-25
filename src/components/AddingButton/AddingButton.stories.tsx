@@ -18,4 +18,5 @@ const Template = (args: AddingButtonProps) => {
 
 export const Default = Template.bind({});
 
+// @ts-ignore: https://github.com/storybookjs/storybook/issues/11916
 Default.args = {};

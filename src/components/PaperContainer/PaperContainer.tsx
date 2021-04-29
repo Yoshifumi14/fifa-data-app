@@ -4,17 +4,19 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Box, Grid, IconButton, Typography } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export type PaperContainerProps = {
   title: string;
   onDelete: () => void;
   onEdit: () => void;
   renderContents: JSX.Element;
+  isLoaDing?: boolean;
 };
 
 export const COMPONENT_NAME = "components/PaperContainer";
 
-export const PaperContainer = ({ title, onDelete, onEdit, renderContents }: PaperContainerProps) => {
+export const PaperContainer = ({ title, onDelete, onEdit, renderContents, isLoaDing = false }: PaperContainerProps) => {
   const classes = useStyles();
   return (
     <Paper elevation={1} className={classes.paper}>
@@ -36,7 +38,13 @@ export const PaperContainer = ({ title, onDelete, onEdit, renderContents }: Pape
         </Grid>
       </Grid>
       <Box display="flex" justifyContent="center" alignItems="center">
-        {renderContents}
+        {isLoaDing ? (
+          <Box display="flex" justifyContent="center" alignItems="center" width={300} height={280}>
+            <CircularProgress size={80} />
+          </Box>
+        ) : (
+          renderContents
+        )}
       </Box>
     </Paper>
   );

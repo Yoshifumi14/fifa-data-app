@@ -1,6 +1,6 @@
 // 参考:https://storybook.js.org/docs/react/configure/typescript
 module.exports = {
-  stories: ['../src/components/**/*.stories.tsx'],
+  stories: ['../src/**/*.stories.tsx'],
     addons: [
       '@storybook/addon-links',
       '@storybook/addon-essentials',

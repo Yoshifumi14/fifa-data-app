@@ -1,4 +1,4 @@
 import { RootState } from "store/Store";
 
 export const appSelector = (state: RootState) => state.app;
-export const appQueryConditonIdListSelector = (state: RootState) => appSelector(state).queryConditonIdList;
+export const appChartAccessorListSelector = (state: RootState) => appSelector(state).chartAccessorList;

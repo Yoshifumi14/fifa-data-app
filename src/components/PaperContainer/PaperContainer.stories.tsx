@@ -9,13 +9,7 @@ export default {
 };
 
 const Template = (args: PaperContainerProps) => {
-  return (
-    // <Paper style={{ margin: 5, padding: 5 }} elevation={0}>
-    <>
-      <PaperContainer {...args} />
-    </>
-    // </Paper>
-  );
+  return <PaperContainer {...args} />;
 };
 
 export const Default = Template.bind({});

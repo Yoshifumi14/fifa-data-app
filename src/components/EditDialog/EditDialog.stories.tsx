@@ -7,17 +7,24 @@ import Button from "@material-ui/core/Button";
 export default {
   title: COMPONENT_NAME,
   component: EditDialog,
+  decorators: [
+    (Story: any) => (
+      <Paper style={{ margin: 5, padding: 5 }} elevation={0}>
+        <Story />
+      </Paper>
+    ),
+  ],
 };
 
 const Template = (args: EditDialogProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <Paper style={{ margin: 5, padding: 5 }} elevation={0}>
+    <>
       <Button variant="outlined" onClick={() => setOpen(true)}>
         dialog open
       </Button>
       <EditDialog {...args} open={open} onClickOk={() => setOpen(false)} onClickCancel={() => setOpen(false)} />
-    </Paper>
+    </>
   );
 };
 

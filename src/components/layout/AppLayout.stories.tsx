@@ -24,7 +24,7 @@ Default.args = {
     headerTitle: "HeaderTitle",
     body: <div>hogehoge</div>,
   },
-  renderMainContents: (
+  children: (
     <div>
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore

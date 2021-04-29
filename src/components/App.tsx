@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import { deleteNationalPlayerData, getPlayerData } from "../store/slice/data/player/PlayerData";
 import { playerDataListSelector } from "../store/slice/data/player/PlayerDataSelector";
-import Chart from "./Chart/Chart";
+import { Chart } from "./Chart";
 import { PaperContainer } from "./PaperContainer/PaperContainer";
 import { Grid } from "@material-ui/core";
 

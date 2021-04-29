@@ -6,6 +6,7 @@ import { COMPONENT_NAME, AddingButton, AddingButtonProps } from "./AddingButton"
 export default {
   title: COMPONENT_NAME,
   component: AddingButton,
+  decorators: [(Story: any) => <Story />],
 };
 
 const Template = (args: AddingButtonProps) => {

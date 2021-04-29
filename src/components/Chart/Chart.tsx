@@ -3,6 +3,8 @@ import React from "react";
 import PlotlyChart from "react-plotlyjs-ts";
 import { useModeType } from "./Hooks";
 
+import { ChartType } from "store/slice/chart/ChartConfig";
+
 export type ChartProps = {
   chartType: ChartType;
   xData: (number | string)[];
@@ -13,17 +15,6 @@ export type ChartProps = {
   xAxisTitle?: string;
   yAxisTitle?: string;
 };
-
-export const ChartTypeSet = {
-  /** 折れ線 */
-  LINE: "line",
-  /** 棒 */
-  BAR: "bar",
-  /** 散布図 */
-  SCATTER: "scatter",
-} as const;
-
-export type ChartType = typeof ChartTypeSet[keyof typeof ChartTypeSet];
 
 export const COMPONENT_NAME = "components/Chart";
 

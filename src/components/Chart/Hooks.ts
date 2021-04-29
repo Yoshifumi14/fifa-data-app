@@ -1,4 +1,4 @@
-import { ChartType, ChartTypeSet } from "./Chart";
+import { ChartType, ChartTypeSet } from "store/slice/chart/ChartConfig";
 
 export const useModeType = (chartType: ChartType) => {
   switch (chartType) {

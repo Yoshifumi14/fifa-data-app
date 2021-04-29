@@ -1,22 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type AppState = {
-  queryConditonIdList: string[];
+  chartAccessorList: ChartAccessor[];
+};
+
+export type ChartAccessor = {
+  chartId: string;
+  queryConditonId: string;
 };
 
 const initialState: AppState = {
-  queryConditonIdList: [],
+  chartAccessorList: [],
 };
 
 export const appSlice = createSlice({
   name: "App",
   initialState,
   reducers: {
-    addQueryConditonId: (state, action: PayloadAction<{ queryConditonId: string }>) => {
-      state.queryConditonIdList.push(action.payload.queryConditonId);
+    addChartAccessor: (state, action: PayloadAction<{ chartAccessor: ChartAccessor }>) => {
+      state.chartAccessorList.push(action.payload.chartAccessor);
     },
   },
 });
 
-export const { addQueryConditonId } = appSlice.actions;
+export const { addChartAccessor } = appSlice.actions;
 export default appSlice.reducer;

@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PlayerData, NATIONALITY_TYPE } from "../../../api/data/PlayerData";
-
-type DataKey = keyof PlayerData;
-
-type DataValue<T extends DataKey> = PlayerData[T];
+import { DataKey, DataValue, NATIONALITY_TYPE } from "api/data/PlayerData";
 
 export type QueryCondition = {
   nationality: NATIONALITY_TYPE;

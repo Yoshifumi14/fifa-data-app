@@ -18,6 +18,32 @@ export type PlayerData = {
   physic: number;
 };
 
+export type DataKey = keyof PlayerData;
+
+export type DataValue<T extends DataKey> = PlayerData[T];
+
+type PlayerDataKeysType = {
+  [key in DataKey]: DataKey;
+};
+
+export const PlayerDataKeys: PlayerDataKeysType = {
+  playerUrl: "playerUrl",
+  shortName: "shortName",
+  age: "age",
+  nationality: "nationality",
+  overall: "overall",
+  potential: "potential",
+  valueEur: "valueEur",
+  wageEur: "wageEur",
+  playerPositions: "playerPositions",
+  pace: "pace",
+  shooting: "shooting",
+  passing: "passing",
+  dribbling: "dribbling",
+  defending: "defending",
+  physic: "physic",
+} as const;
+
 export const NATIONALITY = {
   Japan: "Japan",
   Korea: "Korea Republic",

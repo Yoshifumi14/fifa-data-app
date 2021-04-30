@@ -7,7 +7,7 @@ export type AppState = {
 
 export type ChartAccessor = {
   chartId: string;
-  queryConditonId: string;
+  queryConditionId: string;
 };
 
 const initialState: AppState = {

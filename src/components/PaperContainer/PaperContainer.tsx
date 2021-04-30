@@ -10,13 +10,18 @@ export type PaperContainerProps = {
   title: string;
   onDelete: () => void;
   onEdit: () => void;
-  renderContents: JSX.Element;
-  isLoaDing?: boolean;
+  isLoading?: boolean;
 };
 
 export const COMPONENT_NAME = "components/PaperContainer";
 
-export const PaperContainer = ({ title, onDelete, onEdit, renderContents, isLoaDing = false }: PaperContainerProps) => {
+export const PaperContainer = ({
+  title,
+  onDelete,
+  onEdit,
+  children,
+  isLoading = false,
+}: React.PropsWithChildren<PaperContainerProps>) => {
   const classes = useStyles();
   return (
     <Paper elevation={1} className={classes.paper}>
@@ -38,12 +43,12 @@ export const PaperContainer = ({ title, onDelete, onEdit, renderContents, isLoaD
         </Grid>
       </Grid>
       <Box display="flex" justifyContent="center" alignItems="center">
-        {isLoaDing ? (
+        {isLoading ? (
           <Box display="flex" justifyContent="center" alignItems="center" width={300} height={280}>
             <CircularProgress size={80} />
           </Box>
         ) : (
-          renderContents
+          children
         )}
       </Box>
     </Paper>

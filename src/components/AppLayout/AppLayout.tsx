@@ -100,7 +100,7 @@ export const AppLayout = ({
   );
 };
 
-const DRAWER_WIDTH = 300;
+const DRAWER_WIDTH = 350;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

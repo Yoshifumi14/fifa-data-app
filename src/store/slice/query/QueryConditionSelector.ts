@@ -1,12 +1,12 @@
 import { RootState } from "store/Store";
 
-export const queryConditionSelector = (queryConditionId: string) => (state: RootState) =>
+const queryConditionSelector = (queryConditionId: string) => (state: RootState) =>
   state.queryCondition.queryConditionMap[queryConditionId];
 
 export const queryConditionNationalitySelector = (queryConditionId: string) => (state: RootState) =>
   queryConditionSelector(queryConditionId)(state)!.nationality;
 
-export const queryConditionAxisSelector = (queryConditionId: string) => (state: RootState) =>
+const queryConditionAxisSelector = (queryConditionId: string) => (state: RootState) =>
   queryConditionSelector(queryConditionId)(state)!.axis;
 
 export const queryConditionAxisXSelector = (queryConditionId: string) => (state: RootState) =>

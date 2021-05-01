@@ -28,7 +28,12 @@ export const ChartPaper = () => {
   };
   const title = useChartCondfigSelector(chartCondfigChartTitleSelector);
   return (
-    <PaperContainer title={title ?? "Untitled"} onEdit={onEdit} onDelete={onDelete} isEditing={isEditingThisChart}>
+    <PaperContainer
+      title={title !== "" ? title : "untitled"}
+      onEdit={onEdit}
+      onDelete={onDelete}
+      isEditing={isEditingThisChart}
+    >
       <ChartRenderer />
     </PaperContainer>
   );

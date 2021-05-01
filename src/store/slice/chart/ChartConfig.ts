@@ -44,11 +44,63 @@ export const ChartConfigSlice = createSlice({
     setChartConfig: (state, action: PayloadAction<{ chartId: string; ChartConfig: ChartConfig }>) => {
       state.chartConfigMap[action.payload.chartId] = action.payload.ChartConfig;
     },
+    setChartConfigTitle: (state, action: PayloadAction<{ chartId: string; title: ChartConfig["chartTitle"] }>) => {
+      const chartConfig = state.chartConfigMap[action.payload.chartId];
+      if (chartConfig) {
+        chartConfig.chartTitle = action.payload.title;
+      }
+    },
+    setChartConfigType: (state, action: PayloadAction<{ chartId: string; type: ChartConfig["chartType"] }>) => {
+      const chartConfig = state.chartConfigMap[action.payload.chartId];
+      if (chartConfig) {
+        chartConfig.chartType = action.payload.type;
+      }
+    },
+    setChartConfigXRange: (state, action: PayloadAction<{ chartId: string; xRange: ChartConfig["xRange"] }>) => {
+      const chartConfig = state.chartConfigMap[action.payload.chartId];
+      if (chartConfig) {
+        chartConfig.xRange = action.payload.xRange;
+      }
+    },
+    setChartConfigYRange: (state, action: PayloadAction<{ chartId: string; yRange: ChartConfig["yRange"] }>) => {
+      const chartConfig = state.chartConfigMap[action.payload.chartId];
+      if (chartConfig) {
+        chartConfig.yRange = action.payload.yRange;
+      }
+    },
+    setChartConfigXAxisTitle: (
+      state,
+      action: PayloadAction<{ chartId: string; xAxisTitle: ChartConfig["xAxisTitle"] }>
+    ) => {
+      const chartConfig = state.chartConfigMap[action.payload.chartId];
+      if (chartConfig) {
+        chartConfig.xAxisTitle = action.payload.xAxisTitle;
+      }
+    },
+    setChartConfigYAxisTitle: (
+      state,
+      action: PayloadAction<{ chartId: string; yAxisTitle: ChartConfig["yAxisTitle"] }>
+    ) => {
+      const chartConfig = state.chartConfigMap[action.payload.chartId];
+      if (chartConfig) {
+        chartConfig.yAxisTitle = action.payload.yAxisTitle;
+      }
+    },
     deleteChartConfig: (state, action: PayloadAction<{ chartId: string }>) => {
       delete state.chartConfigMap[action.payload.chartId];
     },
   },
 });
 
-export const { addInitialChartConfig, setChartConfig, deleteChartConfig } = ChartConfigSlice.actions;
+export const {
+  addInitialChartConfig,
+  setChartConfig,
+  setChartConfigTitle,
+  setChartConfigType,
+  setChartConfigXRange,
+  setChartConfigYRange,
+  setChartConfigXAxisTitle,
+  setChartConfigYAxisTitle,
+  deleteChartConfig,
+} = ChartConfigSlice.actions;
 export default ChartConfigSlice.reducer;

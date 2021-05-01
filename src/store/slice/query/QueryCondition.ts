@@ -39,19 +39,28 @@ export const queryConditionSlice = createSlice({
     setQueryCondition: (state, action: PayloadAction<{ queryConditionId: string; queryCondition: QueryCondition }>) => {
       state.queryConditionMap[action.payload.queryConditionId] = action.payload.queryCondition;
     },
-    setNationality: (state, action: PayloadAction<{ queryConditionId: string; nationality: NATIONALITY_TYPE }>) => {
+    setQueryConditionNationality: (
+      state,
+      action: PayloadAction<{ queryConditionId: string; nationality: NATIONALITY_TYPE }>
+    ) => {
       const queryCondition = state.queryConditionMap[action.payload.queryConditionId];
       if (queryCondition) {
         queryCondition.nationality = action.payload.nationality;
       }
     },
-    setAxis: (state, action: PayloadAction<{ queryConditionId: string; axis: QueryCondition["axis"] }>) => {
+    setQueryConditionAxis: (
+      state,
+      action: PayloadAction<{ queryConditionId: string; axis: QueryCondition["axis"] }>
+    ) => {
       const queryCondition = state.queryConditionMap[action.payload.queryConditionId];
       if (queryCondition) {
         queryCondition.axis = action.payload.axis;
       }
     },
-    setFilter: (state, action: PayloadAction<{ queryConditionId: string; filter: QueryCondition["filter"] }>) => {
+    setQueryConditionFilter: (
+      state,
+      action: PayloadAction<{ queryConditionId: string; filter: QueryCondition["filter"] }>
+    ) => {
       const queryCondition = state.queryConditionMap[action.payload.queryConditionId];
       if (queryCondition) {
         queryCondition.filter = action.payload.filter;
@@ -63,5 +72,12 @@ export const queryConditionSlice = createSlice({
   },
 });
 
-export const { addInitialQueryCondition, setQueryCondition, deleteQueryCondition } = queryConditionSlice.actions;
+export const {
+  addInitialQueryCondition,
+  setQueryCondition,
+  setQueryConditionNationality,
+  deleteQueryCondition,
+  setQueryConditionAxis,
+  setQueryConditionFilter,
+} = queryConditionSlice.actions;
 export default queryConditionSlice.reducer;

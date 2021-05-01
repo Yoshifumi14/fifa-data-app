@@ -1,6 +1,6 @@
 import { RootState } from "../../Store";
 
-export const chartConfigSelector = (chartId: string) => (state: RootState) => state.chartConfig.chartConfigMap[chartId];
+const chartConfigSelector = (chartId: string) => (state: RootState) => state.chartConfig.chartConfigMap[chartId];
 
 export const chartCondfigChartTitleSelector = (chartId: string) => (state: RootState) =>
   chartConfigSelector(chartId)(state)!.chartTitle;

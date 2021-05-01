@@ -23,7 +23,6 @@ export const CreateChartDialog = () => {
   const onClickOk = () => {
     if (ref.current) {
       const { nationality, xAxis, yAxis, chartType } = ref.current.getSettingValues();
-      dispatch(getPlayerData({ nationality }));
       const chartId = nanoid();
       const queryConditionId = nanoid();
       dispatch(
@@ -48,6 +47,7 @@ export const CreateChartDialog = () => {
           axis: { x: xAxis, y: yAxis },
         })
       );
+      dispatch(getPlayerData({ nationality }));
     }
     setOpenDialog(false);
   };

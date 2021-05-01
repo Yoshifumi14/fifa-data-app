@@ -25,8 +25,17 @@ export const appSlice = createSlice({
     setDrawerOpen: (state, action: PayloadAction<boolean>) => {
       state.drawerOpen = action.payload;
     },
+    deleteChartAccesser: (state, action: PayloadAction<{ chartAccessor: ChartAccessor }>) => {
+      state.chartAccessorList = state.chartAccessorList.filter(
+        (acc) =>
+          !(
+            acc.chartId === action.payload.chartAccessor.chartId &&
+            acc.queryConditionId === action.payload.chartAccessor.queryConditionId
+          )
+      );
+    },
   },
 });
 
-export const { addChartAccessor, setDrawerOpen } = appSlice.actions;
+export const { addChartAccessor, setDrawerOpen, deleteChartAccesser } = appSlice.actions;
 export default appSlice.reducer;

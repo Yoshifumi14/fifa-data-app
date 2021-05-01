@@ -8,7 +8,7 @@ import { ChartType } from "store/slice/chart/ChartConfig";
 export type ChartProps = {
   chartType: ChartType;
   xData: (number | string)[];
-  yData: number[];
+  yData: (number | string)[];
   zData?: (number | string)[];
   xRange?: number[];
   yRange?: number[];

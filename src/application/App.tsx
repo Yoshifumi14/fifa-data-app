@@ -1,12 +1,17 @@
 import React from "react";
 import { AppLayout } from "../components/AppLayout";
-import Button from "@material-ui/core/Button";
 import { CreateChartDialog } from "./CreateChartDialog";
-import { useSelector } from "react-redux";
-import { appChartAccessorListSelector } from "../store/slice/app/AppSelector";
+import { useSelector, useDispatch } from "react-redux";
+import { appChartAccessorListSelector, appDrawerOpenSelector } from "../store/slice/app/AppSelector";
+import { ChartPaper } from "./ChartLogic/ChartPaper";
+import { ChartContext } from "./ChartLogic/ChartContext";
+import { setDrawerOpen } from "store/slice/app/App";
+import { Box } from "@material-ui/core";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
 export const App = () => {
-  const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const drawerOpen = useSelector(appDrawerOpenSelector);
   const acceccerList = useSelector(appChartAccessorListSelector);
   return (
     <AppLayout
@@ -15,25 +20,23 @@ export const App = () => {
         headerTitle: "headerTitle",
         body: <div>hoge</div>,
       }}
-      drawerOpen={open}
-      handleDrawerClose={() => setOpen(false)}
+      drawerOpen={drawerOpen}
+      handleDrawerClose={() => dispatch(setDrawerOpen(false))}
     >
-      <h3>App</h3>
-      <Button variant="contained" color="primary" onClick={() => setOpen(!open)}>
-        Drawer
-      </Button>
-      <div>
-        <CreateChartDialog />
-      </div>
-      <div>
+      <Box display="flex" flexWrap="wrap" alignContent="flex-start">
         {acceccerList.map((acc) => {
           return (
-            <p>
-              {acc.chartId} / {acc.queryConditionId}
-            </p>
+            <Box m={1}>
+              <ChartContext.Provider value={{ chartId: acc.chartId, queryConditionId: acc.queryConditionId }}>
+                <ChartPaper />
+              </ChartContext.Provider>
+            </Box>
           );
         })}
-      </div>
+        <Box m={1}>
+          <CreateChartDialog />
+        </Box>
+      </Box>
     </AppLayout>
   );
 };

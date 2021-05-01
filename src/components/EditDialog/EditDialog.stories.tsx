@@ -1,8 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
+import React from "react";
 import Paper from "@material-ui/core/Paper";
-import React, { useState } from "react";
-import { COMPONENT_NAME, EditDialog, EditDialogProps } from "./EditDialog";
 import Button from "@material-ui/core/Button";
+import { COMPONENT_NAME, EditDialog, EditDialogProps } from "./EditDialog";
 
 export default {
   title: COMPONENT_NAME,
@@ -17,7 +17,7 @@ export default {
 };
 
 const Template = (args: EditDialogProps) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = React.useState(false);
   return (
     <>
       <Button variant="outlined" onClick={() => setOpen(true)}>

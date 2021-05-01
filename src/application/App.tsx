@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Box } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 
 import { appChartAccessorListSelector, appDrawerOpenSelector } from "store/slice/app/AppSelector";
 import { setDrawerOpen } from "store/slice/app/App";

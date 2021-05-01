@@ -1,4 +1,3 @@
-import React from "react";
 import Paper from "@material-ui/core/Paper";
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles, createStyles, Theme, fade } from "@material-ui/core/styles";

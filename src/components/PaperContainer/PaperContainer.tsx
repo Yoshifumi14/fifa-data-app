@@ -1,7 +1,10 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Box, Grid, IconButton, Typography } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import CircularProgress from "@material-ui/core/CircularProgress";

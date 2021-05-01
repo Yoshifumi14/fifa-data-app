@@ -12,7 +12,7 @@ import { NATIONALITY_TYPE, NATIONALITY, PlayerDataKeys, DataKey } from "api/data
 import { addInitialChartConfig, ChartType, ChartTypeSet } from "store/slice/chart/ChartConfig";
 import { getPlayerData } from "store/slice/data/player/PlayerData";
 import { addInitialQueryCondition } from "store/slice/query/QueryCondition";
-import { addChartAccessor } from "store/slice/app/App";
+import { addChartAccessor, setEditingChart } from "store/slice/app/App";
 import { EditDialog } from "components/EditDialog/EditDialog";
 import { AddingButton } from "components/AddingButton/AddingButton";
 import { SettingElement } from "components/SettingElement";
@@ -54,7 +54,12 @@ export const CreateChartDialog = () => {
   const ref = React.useRef<ChartDialogContentsRefType>(null);
   return (
     <>
-      <AddingButton onClick={() => setOpenDialog(true)} />
+      <AddingButton
+        onClick={() => {
+          dispatch(setEditingChart({ editingChart: null }));
+          setOpenDialog(true);
+        }}
+      />
       <EditDialog
         open={openDialog}
         onClickCancel={() => setOpenDialog(false)}

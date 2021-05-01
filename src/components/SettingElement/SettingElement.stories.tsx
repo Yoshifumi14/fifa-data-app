@@ -1,9 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
+import React from "react";
 import { Checkbox, Divider, FormControlLabel, Select, TextField } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-import React from "react";
-import { COMPONENT_NAME, SettingElement, SettingElementProps } from "./SettingElement";
 import MenuItem from "@material-ui/core/MenuItem";
+import { COMPONENT_NAME, SettingElement, SettingElementProps } from "./SettingElement";
 
 export default {
   title: COMPONENT_NAME,

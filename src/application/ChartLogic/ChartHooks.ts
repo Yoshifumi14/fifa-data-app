@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import { NATIONALITY_TYPE } from "api/data/PlayerData";
 import { RootState } from "store/Store";
+import { queryConditionNationalitySelector } from "store/slice/query/QueryConditionSelector";
+
 import { ChartContext } from "./ChartContext";
-import { NATIONALITY, NATIONALITY_TYPE } from "../../api/data/PlayerData";
-import { queryConditionNationalitySelector } from "../../store/slice/query/QueryConditionSelector";
 
 export function useChartCondfigSelector<T>(selector: (chartId: string) => (state: RootState) => T) {
   const chartId = React.useContext(ChartContext).chartId;
@@ -21,6 +22,6 @@ export function usePlayerDataSelector<T>(selector: (nationality: NATIONALITY_TYP
   if (nationality) {
     return useSelector(selector(nationality));
   } else {
-    throw new Error("nationality is  undefined");
+    throw new Error("nationality is undefined");
   }
 }

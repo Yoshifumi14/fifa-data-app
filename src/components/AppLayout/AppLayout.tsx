@@ -100,7 +100,7 @@ export const AppLayout = ({
   );
 };
 
-const drawerWidth = 240;
+const DRAWER_WIDTH = 350;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -117,22 +117,22 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
+      width: `calc(100% - ${DRAWER_WIDTH}px)`,
       transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
-      marginRight: drawerWidth,
+      marginRight: DRAWER_WIDTH,
     },
     title: {
       flexGrow: 1,
     },
     drawer: {
-      width: drawerWidth,
+      width: DRAWER_WIDTH,
       flexShrink: 0,
     },
     drawerPaper: {
-      width: drawerWidth,
+      width: DRAWER_WIDTH,
     },
     drawerHeader: {
       display: "flex",
@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      marginRight: -drawerWidth,
+      marginRight: -DRAWER_WIDTH,
     },
     contentShift: {
       transition: theme.transitions.create("margin", {

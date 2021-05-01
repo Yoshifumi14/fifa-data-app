@@ -1,5 +1,3 @@
-import React from "react";
-
 import { PlayerDataKeys } from "api/data/PlayerData";
 import { ChartTypeSet } from "store/slice/chart/ChartConfig";
 import { playerDataListByDataKeySelector } from "store/slice/data/player/PlayerDataSelector";

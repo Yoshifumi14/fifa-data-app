@@ -12,7 +12,7 @@ import { NATIONALITY_TYPE, NATIONALITY, PlayerDataKeys, DataKey } from "api/data
 import { addInitialChartConfig, ChartType, ChartTypeSet } from "store/slice/chart/ChartConfig";
 import { getPlayerData } from "store/slice/data/player/PlayerData";
 import { addInitialQueryCondition } from "store/slice/query/QueryCondition";
-import { addChartAccessor } from "store/slice/app/App";
+import { addChartAccessor, setEditingChart } from "store/slice/app/App";
 import { EditDialog } from "components/EditDialog/EditDialog";
 import { AddingButton } from "components/AddingButton/AddingButton";
 import { SettingElement } from "components/SettingElement";
@@ -54,7 +54,12 @@ export const CreateChartDialog = () => {
   const ref = React.useRef<ChartDialogContentsRefType>(null);
   return (
     <>
-      <AddingButton onClick={() => setOpenDialog(true)} />
+      <AddingButton
+        onClick={() => {
+          dispatch(setEditingChart({ editingChart: null }));
+          setOpenDialog(true);
+        }}
+      />
       <EditDialog
         open={openDialog}
         onClickCancel={() => setOpenDialog(false)}
@@ -79,7 +84,7 @@ const ChartDialogContents = React.forwardRef<ChartDialogContentsRefType, {}>((pr
   const [nationality, setNationality] = React.useState<NATIONALITY_TYPE>(NATIONALITY.Japan);
   const [xAxis, seXAxis] = React.useState<DataKey>(PlayerDataKeys.age);
   const [yAxis, seYAxis] = React.useState<DataKey>(PlayerDataKeys.overall);
-  // const [chartType, setChartType] = React.useState<ChartType>(ChartTypeSet.SCATTER);
+  // const [chartType, setChartType] = React.useState<ChartType>(ChartTypeSet.SCATTER); // 現状チャート種類はscatter固定のため保留
 
   React.useImperativeHandle(ref, () => ({
     getSettingValues: () => {
@@ -143,6 +148,7 @@ const ChartDialogContents = React.forwardRef<ChartDialogContentsRefType, {}>((pr
           })}
         </Select>
       </SettingElement>
+      {/* 現状チャート種類はscatter固定のため保留 */}
       {/* <Divider />
       <SettingElement title="チャートの種類">
         <Select

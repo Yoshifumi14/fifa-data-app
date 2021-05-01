@@ -1,6 +1,7 @@
-import { fade, useTheme } from "@material-ui/core";
 import React from "react";
+import { fade, useTheme } from "@material-ui/core/styles";
 import PlotlyChart from "react-plotlyjs-ts";
+
 import { useModeType } from "./Hooks";
 
 import { ChartType } from "store/slice/chart/ChartConfig";

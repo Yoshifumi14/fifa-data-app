@@ -1,4 +1,4 @@
-import { useTheme } from "@material-ui/core";
+import { fade, useTheme } from "@material-ui/core";
 import React from "react";
 import PlotlyChart from "react-plotlyjs-ts";
 import { useModeType } from "./Hooks";
@@ -28,7 +28,7 @@ const Chart = ({ chartType, xData, yData, zData, xRange, yRange, xAxisTitle, yAx
       y: yData,
       text: zData,
       marker: {
-        color: theme.palette.primary.main,
+        color: fade(theme.palette.primary.main, 0.8),
       },
     },
   ];

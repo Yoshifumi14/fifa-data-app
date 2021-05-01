@@ -9,18 +9,19 @@ export default {
 };
 
 const Template = (args: PaperContainerProps) => {
-  return <PaperContainer {...args} />;
+  return (
+    <PaperContainer {...args}>
+      <div>
+        <div>hogehoge,hogehoge,hogehoge</div>
+        <div>hogehoge,hogehoge,hogehoge</div>
+      </div>
+    </PaperContainer>
+  );
 };
 
 export const Default = Template.bind({});
 
 // @ts-ignore: https://github.com/storybookjs/storybook/issues/11916
 Default.args = {
-  renderContents: (
-    <div>
-      <div>hogehoge,hogehoge,hogehoge</div>
-      <div>hogehoge,hogehoge,hogehoge</div>
-    </div>
-  ),
   title: "TITLE",
 };

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PlayerData, requestPlayerDataList, NATIONALITY_TYPE } from "api/data/PlayerData";
+import { RootState } from "../../../Store";
 
 export type PlayerDataState = {
   nationalPlayerData: {
@@ -10,13 +11,18 @@ export type PlayerDataState = {
   };
 };
 
-export const getPlayerData = createAsyncThunk<{ playerDataList: PlayerData[] }, { nationality: NATIONALITY_TYPE }>(
-  "api/PlayerData",
-  async ({ nationality }, thunkAPI) => {
+export const getPlayerData = createAsyncThunk<
+  { playerDataList: PlayerData[] | null },
+  { nationality: NATIONALITY_TYPE }
+>("api/PlayerData", async ({ nationality }, thunkAPI) => {
+  const nationalPlayerData = (thunkAPI.getState() as RootState).playerData.nationalPlayerData[nationality];
+  if (nationalPlayerData === undefined) {
     const playerDataList = await requestPlayerDataList(nationality);
-    return { playerDataList: playerDataList };
+    return { playerDataList };
+  } else {
+    return { playerDataList: null };
   }
-);
+});
 
 const initialState: PlayerDataState = { nationalPlayerData: {} };
 
@@ -32,13 +38,16 @@ export const playerDataSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // メモ: https://redux-toolkit.js.org/api/createAsyncThunk#examples
     builder.addCase(getPlayerData.fulfilled, (state, action) => {
       const nationality = action.meta.arg.nationality;
       const playerDataList = action.payload.playerDataList;
-      state.nationalPlayerData[nationality] = {
-        nationality,
-        playerDataList,
-      };
+      if (playerDataList) {
+        state.nationalPlayerData[nationality] = {
+          nationality,
+          playerDataList,
+        };
+      }
     });
   },
 });

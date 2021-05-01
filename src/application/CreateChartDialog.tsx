@@ -23,7 +23,6 @@ export const CreateChartDialog = () => {
   const onClickOk = () => {
     if (ref.current) {
       const { nationality, xAxis, yAxis, chartType } = ref.current.getSettingValues();
-      dispatch(getPlayerData({ nationality }));
       const chartId = nanoid();
       const queryConditionId = nanoid();
       dispatch(
@@ -45,9 +44,10 @@ export const CreateChartDialog = () => {
         addInitialQueryCondition({
           queryConditionId,
           nationality,
-          axis: { x: xAxis, y: yAxis },
+          axis: { x: xAxis, y: yAxis, z: PlayerDataKeys.shortName },
         })
       );
+      dispatch(getPlayerData({ nationality }));
     }
     setOpenDialog(false);
   };
@@ -79,11 +79,11 @@ const ChartDialogContents = React.forwardRef<ChartDialogContentsRefType, {}>((pr
   const [nationality, setNationality] = React.useState<NATIONALITY_TYPE>(NATIONALITY.Japan);
   const [xAxis, seXAxis] = React.useState<DataKey>(PlayerDataKeys.age);
   const [yAxis, seYAxis] = React.useState<DataKey>(PlayerDataKeys.overall);
-  const [chartType, setChartType] = React.useState<ChartType>(ChartTypeSet.SCATTER);
+  // const [chartType, setChartType] = React.useState<ChartType>(ChartTypeSet.SCATTER);
 
   React.useImperativeHandle(ref, () => ({
     getSettingValues: () => {
-      return { nationality, xAxis, yAxis, chartType };
+      return { nationality, xAxis, yAxis, chartType: ChartTypeSet.SCATTER };
     },
   }));
 
@@ -143,7 +143,7 @@ const ChartDialogContents = React.forwardRef<ChartDialogContentsRefType, {}>((pr
           })}
         </Select>
       </SettingElement>
-      <Divider />
+      {/* <Divider />
       <SettingElement title="チャートの種類">
         <Select
           value={chartType}
@@ -160,7 +160,7 @@ const ChartDialogContents = React.forwardRef<ChartDialogContentsRefType, {}>((pr
             );
           })}
         </Select>
-      </SettingElement>
+      </SettingElement> */}
     </div>
   );
 });

@@ -57,8 +57,11 @@ export const queryConditionSlice = createSlice({
         queryCondition.filter = action.payload.filter;
       }
     },
+    deleteQueryCondition: (state, action: PayloadAction<{ queryConditionId: string }>) => {
+      delete state.queryConditionMap[action.payload.queryConditionId];
+    },
   },
 });
 
-export const { addInitialQueryCondition, setQueryCondition } = queryConditionSlice.actions;
+export const { addInitialQueryCondition, setQueryCondition, deleteQueryCondition } = queryConditionSlice.actions;
 export default queryConditionSlice.reducer;

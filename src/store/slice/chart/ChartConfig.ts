@@ -41,11 +41,14 @@ export const ChartConfigSlice = createSlice({
         chartType: action.payload.chartType,
       };
     },
-    setChartConfig: (state, action: PayloadAction<{ ChartConfigId: string; ChartConfig: ChartConfig }>) => {
-      state.chartConfigMap[action.payload.ChartConfigId] = action.payload.ChartConfig;
+    setChartConfig: (state, action: PayloadAction<{ chartId: string; ChartConfig: ChartConfig }>) => {
+      state.chartConfigMap[action.payload.chartId] = action.payload.ChartConfig;
+    },
+    deleteChartConfig: (state, action: PayloadAction<{ chartId: string }>) => {
+      delete state.chartConfigMap[action.payload.chartId];
     },
   },
 });
 
-export const { addInitialChartConfig, setChartConfig } = ChartConfigSlice.actions;
+export const { addInitialChartConfig, setChartConfig, deleteChartConfig } = ChartConfigSlice.actions;
 export default ChartConfigSlice.reducer;

@@ -13,10 +13,16 @@ export const nationalitySelector = (nationalityKey: NATIONALITY_TYPE) => (state:
 export const playerDataListSelector = (nationalityKey: NATIONALITY_TYPE) => (state: RootState) =>
   playerDataSelector(nationalityKey)(state)?.playerDataList;
 
-export const playerDataListByDataKeySelector = (dataKey: DataKey) => (nationalityKey: NATIONALITY_TYPE) => (
-  state: RootState
-) => playerDataListSelector(nationalityKey)(state)?.map((playerData) => playerData[dataKey]);
+export const playerDataListByDataKeySelector = (dataKey: DataKey, filterFn?: (playerData: PlayerData) => boolean) => (
+  nationalityKey: NATIONALITY_TYPE
+) => (state: RootState) => {
+  if (filterFn) {
+    return filterPlayerDataListSelector(filterFn)(nationalityKey)(state)?.map((playerData) => playerData[dataKey]);
+  } else {
+    return playerDataListSelector(nationalityKey)(state)?.map((playerData) => playerData[dataKey]);
+  }
+};
 
 export const filterPlayerDataListSelector = (filter: (playerData: PlayerData) => boolean) => (
   nationalityKey: NATIONALITY_TYPE
-) => (state: RootState) => playerDataSelector(nationalityKey)(state)?.playerDataList.filter(filter);
+) => (state: RootState) => playerDataListSelector(nationalityKey)(state)?.filter(filter);

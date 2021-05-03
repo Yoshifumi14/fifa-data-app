@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { DataKey, DataValue, NATIONALITY_TYPE } from "api/data/PlayerData";
+import { DataKey, NATIONALITY_TYPE } from "api/data/PlayerData";
 
 export type QueryCondition = {
   nationality: NATIONALITY_TYPE;
@@ -8,10 +8,7 @@ export type QueryCondition = {
     y: DataKey; // 縦軸
     z?: DataKey; // Z軸
   };
-  filter: {
-    target: DataKey;
-    value: DataValue<DataKey>;
-  }[];
+  position?: string;
 };
 
 export type QueryConditionState = {
@@ -33,7 +30,6 @@ export const queryConditionSlice = createSlice({
       state.queryConditionMap[action.payload.queryConditionId] = {
         nationality: action.payload.nationality,
         axis: action.payload.axis,
-        filter: [],
       };
     },
     setQueryCondition: (state, action: PayloadAction<{ queryConditionId: string; queryCondition: QueryCondition }>) => {
@@ -57,13 +53,10 @@ export const queryConditionSlice = createSlice({
         queryCondition.axis = action.payload.axis;
       }
     },
-    setQueryConditionFilter: (
-      state,
-      action: PayloadAction<{ queryConditionId: string; filter: QueryCondition["filter"] }>
-    ) => {
+    setQueryConditionPosition: (state, action: PayloadAction<{ queryConditionId: string; position: string }>) => {
       const queryCondition = state.queryConditionMap[action.payload.queryConditionId];
       if (queryCondition) {
-        queryCondition.filter = action.payload.filter;
+        queryCondition.position = action.payload.position;
       }
     },
     deleteQueryCondition: (state, action: PayloadAction<{ queryConditionId: string }>) => {
@@ -78,6 +71,6 @@ export const {
   setQueryConditionNationality,
   deleteQueryCondition,
   setQueryConditionAxis,
-  setQueryConditionFilter,
+  setQueryConditionPosition,
 } = queryConditionSlice.actions;
 export default queryConditionSlice.reducer;

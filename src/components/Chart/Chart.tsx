@@ -35,10 +35,6 @@ const Chart = ({ chartType, xData, yData, zData, xRange, yRange, xAxisTitle, yAx
   ];
   const layout = {
     hovermode: "closest",
-    transition: {
-      duration: 1500,
-      easing: "cubic-in-out",
-    },
     width: 350,
     height: 300,
     margin: {

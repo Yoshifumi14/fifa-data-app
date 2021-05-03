@@ -18,5 +18,5 @@ export const queryConditionAxisYSelector = (queryConditionId: string) => (state:
 export const queryConditionAxisZSelector = (queryConditionId: string) => (state: RootState) =>
   queryConditionAxisSelector(queryConditionId)(state)!.z;
 
-export const queryConditionFilterSelector = (queryConditionId: string) => (state: RootState) =>
-  queryConditionSelector(queryConditionId)(state)!.filter;
+export const queryConditionPositionSelector = (queryConditionId: string) => (state: RootState) =>
+  queryConditionSelector(queryConditionId)(state)!.position;

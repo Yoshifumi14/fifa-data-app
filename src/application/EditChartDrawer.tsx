@@ -1,24 +1,22 @@
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ChartContext } from "./ChartLogic/ChartContext";
-import { appEditingChartSelector } from "../store/slice/app/AppSelector";
-import { nationalitySelector } from "../store/slice/data/player/PlayerDataSelector";
-import { useChartCondfigSelector, useQueryConditionSelector } from "./ChartLogic/ChartHooks";
-import { chartCondfigChartTitleSelector } from "../store/slice/chart/ChartConfigSelector";
-import { chartAccessorEqultyFn } from "../store/slice/app/AppUtils";
-import { SettingElement } from "../components/SettingElement/SettingElement";
-import Select from "@material-ui/core/Select";
+import { Divider, TextField, MenuItem, Select, Typography } from "@material-ui/core";
+
+import { PlayerDataKeys, DataKey, POSITION_LIST } from "api/data/PlayerData";
+import { appEditingChartSelector } from "store/slice/app/AppSelector";
+import { chartAccessorEqultyFn } from "store/slice/app/AppUtils";
+import { setQueryConditionAxis, setQueryConditionPosition } from "store/slice/query/QueryCondition";
 import {
-  queryConditionNationalitySelector,
+  queryConditionPositionSelector,
   queryConditionAxisXSelector,
   queryConditionAxisYSelector,
-} from "../store/slice/query/QueryConditionSelector";
-import { Divider, TextField, MenuItem, Slider } from "@material-ui/core";
+} from "store/slice/query/QueryConditionSelector";
 import { setChartConfigTitle } from "store/slice/chart/ChartConfig";
-import { PlayerDataKeys, DataKey } from "../api/data/PlayerData";
-import Typography from "@material-ui/core/Typography";
-import { setQueryConditionAxis } from "store/slice/query/QueryCondition";
-// import { chartCondfigXRangeSelector, chartCondfigYRangeSelector } from "../store/slice/chart/ChartConfigSelector";
+import { chartCondfigChartTitleSelector } from "store/slice/chart/ChartConfigSelector";
+import { SettingElement } from "components/SettingElement/SettingElement";
+
+import { ChartContext } from "./ChartLogic/ChartContext";
+import { useChartCondfigSelector, useQueryConditionSelector } from "./ChartLogic/ChartHooks";
 
 export const EditChartDrawer = () => {
   const chartAccesser = useSelector(appEditingChartSelector, chartAccessorEqultyFn);
@@ -34,15 +32,12 @@ export const EditChartDrawer = () => {
 };
 
 const EditChartDrawerBody = () => {
-  // todo: 設定値変更時のチャート側の再レンダリング抑制
   const dispath = useDispatch();
   const { chartId, queryConditionId } = useContext(ChartContext);
-  // const nationality = useQueryConditionSelector(queryConditionNationalitySelector)  // 国変更は面倒なので後
   const title = useChartCondfigSelector(chartCondfigChartTitleSelector);
   const xAxis = useQueryConditionSelector(queryConditionAxisXSelector);
-  // const xRange = useChartCondfigSelector(chartCondfigXRangeSelector); // todo
   const yAxis = useQueryConditionSelector(queryConditionAxisYSelector);
-  // const yRange = useChartCondfigSelector(chartCondfigYRangeSelector); // todo
+  const position = useQueryConditionSelector(queryConditionPositionSelector);
   return (
     <div>
       <SettingElement title="タイトル">
@@ -91,22 +86,23 @@ const EditChartDrawerBody = () => {
         </Select>
       </SettingElement>
       <Divider />
-      {/* <SettingElement title="X軸の範囲">
-        <Slider
-          // classes={{
-          // 	markLabel: classes.markLabel,
-          // }}
-          valueLabelDisplay="auto"
-          // step={step}
-          // marks={marks}
-          value={xRange}
-          min={0}
-          max={100}
-          onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-            dispath(setChartConfigXRange({ chartId, xRange: value as number[] }));
+      <SettingElement title="ポジション">
+        <Select
+          value={position ?? ""}
+          onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+            const value = event.target.value as string;
+            dispath(setQueryConditionPosition({ queryConditionId, position: value }));
           }}
-        />
-      </SettingElement> */}
+        >
+          {Object.values(POSITION_LIST).map((value, i) => {
+            return (
+              <MenuItem key={`${i.toFixed()}:${value}`} value={value}>
+                <Typography>{value !== "" ? value : "undefined"}</Typography>
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </SettingElement>
     </div>
   );
 };

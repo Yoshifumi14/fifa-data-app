@@ -26,8 +26,8 @@ export const AddingButton = ({ onClick }: AddingButtonProps) => {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      width: 350,
-      height: 350,
+      width: 360,
+      height: 355,
       background: fade(theme.palette.background.paper, 0.7),
       border: "dashed",
       borderWidth: 2,

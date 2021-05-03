@@ -98,3 +98,22 @@ function toPlayerData(data: any): PlayerData {
   };
   return playerData;
 }
+
+export const POSITION_LIST = {
+  NONE: "",
+  ST: "ST",
+  LW: "LW",
+  CF: "CF",
+  RW: "RW",
+  CAM: "CAM",
+  LM: "LM",
+  CM: "CM",
+  RM: "RM",
+  LWB: "LWB",
+  CDM: "CDM",
+  RWB: "RWB",
+  LB: "LB",
+  CB: "CB",
+  RB: "RB",
+  GK: "GK",
+} as const;

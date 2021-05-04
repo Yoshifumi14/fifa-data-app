@@ -1,7 +1,7 @@
 import { axiosInstanceOnFlask } from "api/FlaskClient";
 
 export type PlayerData = {
-  playerUrl: string;
+  // playerUrl: string; // 機能追加で使用するかもしれない
   shortName: string;
   age: number;
   nationality: string;
@@ -27,7 +27,7 @@ type PlayerDataKeysType = {
 };
 
 export const PlayerDataKeys: PlayerDataKeysType = {
-  playerUrl: "playerUrl",
+  // playerUrl: "playerUrl",
   shortName: "shortName",
   age: "age",
   nationality: "nationality",
@@ -80,7 +80,7 @@ export function requestPlayerDataList(nationality: NATIONALITY_TYPE): Promise<Pl
 
 function toPlayerData(data: any): PlayerData {
   const playerData: PlayerData = {
-    playerUrl: data.player_url,
+    // playerUrl: data.player_url,
     shortName: data.short_name,
     age: data.age,
     nationality: data.nationality,

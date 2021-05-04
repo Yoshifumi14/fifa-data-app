@@ -27,9 +27,16 @@ $ python flask/debug.py
 ```sh
 $ yarn start
 ```
+http://localhost:3000/
 
 ### storybook
 
 ```sh
 $ yarn storybook
+```
+http://localhost:6006/
+
+### ビルド
+```sh
+$ yarn build
 ```

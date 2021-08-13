@@ -20,7 +20,8 @@ $ yarn install
 
 flaskサーバー起動
 ```sh
-$ python flask/debug.py
+$ cd ./flask
+$ python app.py
 ```
 
 アプリ起動

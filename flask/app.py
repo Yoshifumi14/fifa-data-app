@@ -2,7 +2,7 @@ from flask import Flask, jsonify, make_response, request
 from flask_cors import CORS
 import pandas as pd
 
-df = pd.read_csv("flask/fifa_data.csv")
+df = pd.read_csv("fifa_data.csv")
 
 app = Flask(__name__)
 CORS(app)
@@ -23,4 +23,5 @@ def get_players():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # https://qiita.com/amuyikam/items/01a8c16e3ddbcc734a46 0.0.0.0にしておく
+    app.run(host="0.0.0.0", debug=True)

@@ -7,9 +7,9 @@ phases:
   pre_build:
     commands:
       - npm install -g yarn
-      - yarn install
   build:
     commands:
+      - yarn install
       - yarn build
 
 artifacts:

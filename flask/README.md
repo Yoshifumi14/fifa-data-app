@@ -42,9 +42,9 @@ $ docker pull yoshifumi14/flask-fifa-data
 ```sh
 $ docker run -d -p 5000:5000 --name flask-server yoshifumi14/flask-fifa-data
 ```
-それ移行
+それ以降
 ```sh
-docker start flask-server
+$ docker start flask-server
 ```
 
 ### コンテナ停止

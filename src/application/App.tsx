@@ -18,7 +18,7 @@ export const App = () => {
   const acceccerList = useSelector(appChartAccessorListSelector);
   return (
     <AppLayout
-      appBarTitle="FIFA DATA PLOT"
+      appBarTitle="FIFA DATA APP"
       drawerContents={{
         headerTitle: "チャートを編集",
         body: <EditChartDrawer />,
